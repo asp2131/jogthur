@@ -5,6 +5,28 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@/components/*": [
+        "./components/*",
+        "./src/components/*"
+      ],
+      "@/services/*": [
+        "./src/services/*"
+      ],
+      "@/models/*": [
+        "./src/models/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
+      ],
+      "@/stores/*": [
+        "./src/stores/*"
+      ],
+      "@/hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@/config/*": [
+        "./src/config/*"
       ]
     }
   },
