@@ -5,3 +5,4 @@ export * from './StorageService';
 // Export service implementations
 export * from './LocationServiceImpl';
 export * from './StorageServiceImpl';
+export * from './WorkoutManager';
