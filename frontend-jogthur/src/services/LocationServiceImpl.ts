@@ -3,6 +3,7 @@ import Geolocation, {
   GeolocationError 
 } from '@react-native-community/geolocation';
 import { Platform } from 'react-native';
+import { enhancedPermissionService, LocationPermissionType } from './PermissionService';
 import { LocationPoint } from '../models';
 import { 
   LocationService, 
@@ -212,13 +213,10 @@ export class LocationServiceImpl implements LocationService {
    * @returns A promise that resolves with a boolean indicating if location services are enabled.
    */
   async isLocationEnabled(): Promise<boolean> {
-    // This is a simplified implementation
-    // In a real app, we would check if location services are enabled
-    // using platform-specific APIs
     try {
-      await this.getCurrentLocation();
-      return true;
+      return await enhancedPermissionService.isLocationEnabled();
     } catch (error) {
+      console.error('Error checking location services:', error);
       return false;
     }
   }
@@ -229,25 +227,18 @@ export class LocationServiceImpl implements LocationService {
    * @returns A promise that resolves with a boolean indicating if permission was granted.
    */
   async requestPermissions(backgroundPermission: boolean = false): Promise<boolean> {
-    // This is a simplified implementation
-    // In a real app, we would use a proper permission library
-    // like react-native-permissions
-    
     try {
-      // For iOS, we can use the authorizationLevel option
-      if (Platform.OS === 'ios') {
-        Geolocation.setRNConfiguration({
-          skipPermissionRequests: false,
-          authorizationLevel: backgroundPermission ? 'always' : 'whenInUse'
-        });
+      if (backgroundPermission) {
+        // Request both foreground and background permissions
+        const permissions = await enhancedPermissionService.ensureWorkoutPermissions();
+        return permissions.foreground.granted && (permissions.background?.granted ?? false);
+      } else {
+        // Request only foreground permission
+        const result = await enhancedPermissionService.requestLocationPermissionWithGuidance(
+          LocationPermissionType.WHEN_IN_USE
+        );
+        return result.granted;
       }
-      
-      // For Android, we would need to request additional permissions
-      // for background tracking, but this is simplified here
-      
-      // Request permission by trying to get the current position
-      await this.getCurrentLocation();
-      return true;
     } catch (error) {
       console.error('Permission request error:', error);
       return false;

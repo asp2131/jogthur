@@ -6,3 +6,4 @@ export * from './StorageService';
 export * from './LocationServiceImpl';
 export * from './StorageServiceImpl';
 export * from './WorkoutManager';
+export * from './PermissionService';
