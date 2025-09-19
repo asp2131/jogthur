@@ -1,2 +1,4 @@
-// Model exports will be added here
-export {};
+// Export all models
+export * from './LocationPoint';
+export * from './Workout';
+export * from './UserPreferences';

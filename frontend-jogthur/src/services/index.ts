@@ -1,2 +1,7 @@
-// Service exports will be added here
-export {};
+// Export all services interfaces
+export * from './LocationService';
+export * from './StorageService';
+
+// Export service implementations
+export * from './LocationServiceImpl';
+export * from './StorageServiceImpl';
