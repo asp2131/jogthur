@@ -7,3 +7,4 @@ export * from './LocationServiceImpl';
 export * from './StorageServiceImpl';
 export * from './WorkoutManager';
 export * from './PermissionService';
+export * from './MapCacheService';

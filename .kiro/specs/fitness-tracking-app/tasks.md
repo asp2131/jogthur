@@ -58,7 +58,7 @@
   - Write performance tests to ensure 60fps animation rendering
   - _Requirements: 2.4, 2.5, 2.6, 2.7, 4.1, 4.7_
 
-- [ ] 8. Implement map visualization component
+- [x] 8. Implement map visualization component
   - Create MapView component with React Native Maps integration
   - Implement real-time route drawing with animated polyline
   - Add user location marker with smooth position updates
@@ -67,7 +67,7 @@
   - Write tests for map rendering and route visualization
   - _Requirements: 2.1, 2.2, 5.3_
 
-- [ ] 9. Create main workout screen with split-screen layout
+- [x] 9. Create main workout screen with split-screen layout
   - Implement WorkoutScreen component with split-screen design
   - Integrate MapView component in top half of screen
   - Add Character3D component in bottom half with proper sizing
