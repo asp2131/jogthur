@@ -1,2 +1,3 @@
-// Component exports will be added here
-export {};
+// Export all components
+export * from './SimpleCharacter3D';
+export * from './CharacterAnimationEngine';
