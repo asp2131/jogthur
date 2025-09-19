@@ -1,9 +1,9 @@
 import React from 'react';
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { MMKV } from 'react-native-mmkv';
+import { MMKV } from '../services/MockMMKV';
 import { WorkoutManager, WorkoutSession, WorkoutStats, WorkoutState } from '../services/WorkoutManager';
-import { LocationServiceImpl } from '../services/LocationServiceImpl';
+import { expoLocationService } from '../services/ExpoLocationServiceImpl';
 import { StorageServiceImpl } from '../services/StorageServiceImpl';
 import { Workout, ActivityType, UserPreferences } from '../models';
 
@@ -74,9 +74,8 @@ export const useWorkoutStore = create<WorkoutStore>()(
   persist(
     (set, get) => {
       // Initialize services
-      const locationService = new LocationServiceImpl();
       const storageService = new StorageServiceImpl();
-      const workoutManager = new WorkoutManager(locationService, storageService);
+      const workoutManager = new WorkoutManager(expoLocationService, storageService);
       
       return {
         // Services

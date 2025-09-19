@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   Platform
 } from 'react-native';
-import { WorkoutMapView } from '../components/WorkoutMapView';
+import { FallbackMapView } from '../components/FallbackMapView';
 import { SimpleCharacter3D } from '../components/SimpleCharacter3D';
 import { useWorkoutStore, useCurrentWorkout, useWorkoutActions } from '../stores/workoutStore';
 import { usePermissionAwareActions } from '../hooks/usePermissions';
@@ -375,7 +375,7 @@ export const WorkoutScreen: React.FC = () => {
       
       {/* Top Half - Map View */}
       <View style={styles.mapContainer}>
-        <WorkoutMapView
+        <FallbackMapView
           routePoints={routePoints}
           currentLocation={currentLocation || undefined}
           activityType={activityType}

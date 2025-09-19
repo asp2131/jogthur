@@ -1,7 +1,4 @@
-import Geolocation, { 
-  GeolocationResponse, 
-  GeolocationError 
-} from '@react-native-community/geolocation';
+import * as Location from 'expo-location';
 import { Platform } from 'react-native';
 import { enhancedPermissionService, LocationPermissionType } from './PermissionService';
 import { LocationPoint } from '../models';

@@ -3,7 +3,7 @@ export * from './LocationService';
 export * from './StorageService';
 
 // Export service implementations
-export * from './LocationServiceImpl';
+export * from './ExpoLocationServiceImpl';
 export * from './StorageServiceImpl';
 export * from './WorkoutManager';
 export * from './PermissionService';

@@ -1,4 +1,4 @@
-import { MMKV } from 'react-native-mmkv';
+import { MMKV, MockMMKV } from './MockMMKV';
 import { LocationPoint } from '../models';
 
 /**
@@ -50,7 +50,7 @@ interface BoundingBox {
  * Map cache service for offline tile management
  */
 export class MapCacheService {
-  private storage: MMKV;
+  private storage: MockMMKV;
   private config: CacheConfig;
   private cacheHits: number = 0;
   private cacheMisses: number = 0;

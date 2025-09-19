@@ -1,4 +1,4 @@
-import { MMKV } from 'react-native-mmkv';
+import { MMKV, MockMMKV } from './MockMMKV';
 import { 
   StorageService, 
   WorkoutQueryOptions, 
@@ -12,7 +12,7 @@ import { validateWorkout, validateUserPreferences, createDefaultUserPreferences 
  * Implementation of the StorageService interface using MMKV.
  */
 export class StorageServiceImpl implements StorageService {
-  private storage: MMKV;
+  private storage: MockMMKV;
   private readonly WORKOUT_PREFIX = 'workout_';
   private readonly USER_PREFS_KEY = 'user_preferences';
   private readonly WORKOUT_IDS_KEY = 'workout_ids';

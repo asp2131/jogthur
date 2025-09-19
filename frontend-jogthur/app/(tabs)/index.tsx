@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import WorkoutScreen from '@/';
+import WorkoutScreen from '@/src/screens/WorkoutScreen';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
