@@ -1,57 +1,72 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { Tabs } from 'expo-router';
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { WarioWareColors } from '@/src/styles/WarioWareTheme';
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
+// WarioWare-style tab bar icon component
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={24} style={{ marginBottom: -3 }} {...props} />;
 }
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        tabBarActiveTintColor: WarioWareColors.primary.yellow,
+        tabBarInactiveTintColor: WarioWareColors.neutral.lightGray,
+        tabBarStyle: {
+          backgroundColor: WarioWareColors.neutral.surface,
+          borderTopWidth: 3,
+          borderTopColor: WarioWareColors.primary.yellow,
+          height: 90,
+          paddingBottom: 10,
+          paddingTop: 10,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '700',
+          letterSpacing: 1,
+        },
+        headerShown: false, // We'll handle headers in individual screens
       }}>
+      
+      {/* Home Tab - Quick access to start workouts */}
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          title: 'HOME',
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
       />
+      
+      {/* Active Workout Tab - Real-time tracking */}
       <Tabs.Screen
-        name="two"
+        name="workout"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'WORKOUT',
+          tabBarIcon: ({ color }) => <TabBarIcon name="play-circle" color={color} />,
+        }}
+      />
+      
+      {/* History Tab - Past workouts */}
+      <Tabs.Screen
+        name="history"
+        options={{
+          title: 'HISTORY',
+          tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
+        }}
+      />
+      
+      {/* Settings Tab - User preferences */}
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: 'SETTINGS',
+          tabBarIcon: ({ color }) => <TabBarIcon name="cog" color={color} />,
         }}
       />
     </Tabs>
